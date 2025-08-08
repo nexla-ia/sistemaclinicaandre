@@ -187,11 +187,33 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
 
       if (data) {
         setBookings(prev => prev.map(b => b.id === bookingId ? { ...b, status } : b));
-        alert('Status do agendamento atualizado!');
+        
+        // Find the booking to get customer name
+        const booking = bookings.find(b => b.id === bookingId);
+        const customerName = booking?.customer?.name || 'Cliente';
+        
+        if (status === 'completed') {
+          showSuccess(
+            'Agendamento Concluído!', 
+            `O atendimento de ${customerName} foi marcado como concluído com sucesso.`
+          );
+        } else if (status === 'confirmed') {
+          showSuccess(
+            'Agendamento Confirmado!', 
+            `O agendamento de ${customerName} foi confirmado com sucesso.`
+          );
+        } else if (status === 'cancelled') {
+          showSuccess(
+            'Agendamento Cancelado', 
+            `O agendamento de ${customerName} foi cancelado.`
+          );
+        } else {
+          showSuccess('Status Atualizado!', 'Status do agendamento atualizado com sucesso!');
+        }
       }
     } catch (error) {
       console.error('Error updating booking status:', error);
-      alert('Erro ao atualizar status do agendamento');
+      showError('Erro', 'Erro ao atualizar status do agendamento. Tente novamente.');
     }
   };
 
