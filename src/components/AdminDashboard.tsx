@@ -218,16 +218,23 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
   };
 
   const handleLogout = async () => {
-    if (confirm('Tem certeza que deseja sair?')) {
-      try {
-        await signOut();
-        if (onLogout) {
-          onLogout();
+    showConfirm(
+      'Confirmar Saída',
+      'Tem certeza que deseja sair do sistema? Você precisará fazer login novamente para acessar o painel administrativo.',
+      async () => {
+        try {
+          await signOut();
+          if (onLogout) {
+            onLogout();
+          }
+        } catch (error) {
+          console.error('Error signing out:', error);
+          showError('Erro', 'Erro ao sair do sistema. Tente novamente.');
         }
-      } catch (error) {
-        console.error('Error signing out:', error);
-      }
-    }
+      },
+      'Sair',
+      'Cancelar'
+    );
   };
 
   const handleApproveReview = async (reviewId: string) => {
