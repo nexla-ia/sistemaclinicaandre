@@ -407,7 +407,8 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <div className="flex justify-between items-center">
@@ -989,7 +990,21 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
           </div>
         )}
       </div>
-    </div>
+      </div>
+      
+      {/* Modal Component */}
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={hideModal}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        onConfirm={modal.onConfirm}
+        showCancel={modal.showCancel}
+        confirmText={modal.confirmText}
+        cancelText={modal.cancelText}
+      />
+    </>
   );
 };
 
