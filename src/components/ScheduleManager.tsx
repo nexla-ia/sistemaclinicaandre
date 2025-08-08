@@ -9,6 +9,7 @@ import {
   blockSlot, 
   unblockSlot,
   generateSlotsForPeriod,
+  supabase,
   type SalonHours,
   type Salon 
 } from '../lib/supabase';
