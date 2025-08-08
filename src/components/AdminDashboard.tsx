@@ -26,29 +26,29 @@ interface AdminDashboardProps {
   onLogout?: () => void;
 }
 
-const {
-  modal,
-  showSuccess,
-  showError,
-  showConfirm,
-  hideModal,
-} = useModal();
-
-const modalComponent = (
-  <Modal
-    isOpen={modal.isOpen}
-    onClose={hideModal}
-    title={modal.title}
-    message={modal.message}
-    type={modal.type}
-    confirmText={modal.confirmText}
-    cancelText={modal.cancelText}
-    onConfirm={modal.onConfirm}
-    showCancel={modal.showCancel}
-  />
-);
-
 const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
+  const {
+    modal,
+    showSuccess,
+    showError,
+    showConfirm,
+    hideModal,
+  } = useModal();
+
+  const modalComponent = (
+    <Modal
+      isOpen={modal.isOpen}
+      onClose={hideModal}
+      title={modal.title}
+      message={modal.message}
+      type={modal.type}
+      confirmText={modal.confirmText}
+      cancelText={modal.cancelText}
+      onConfirm={modal.onConfirm}
+      showCancel={modal.showCancel}
+    />
+  );
+
   const [activeTab, setActiveTab] = useState('bookings');
   const [services, setServices] = useState<Service[]>([]);
   const [bookings, setBookings] = useState<Booking[]>([]);
