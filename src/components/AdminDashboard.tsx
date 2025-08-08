@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
+import { useModal } from '../hooks/useModal';
 import { Calendar, Users, Settings, BarChart3, Clock, Plus, Edit, Trash2, Check, X, LogOut, Star, MessageCircle } from 'lucide-react';
 import { 
   getServices, 
