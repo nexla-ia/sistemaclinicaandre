@@ -117,7 +117,7 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
   const handleAddService = async () => {
     try {
       if (!salon) {
-        alert('Erro: Salão não encontrado');
+        showError('Erro', 'Salão não encontrado');
         return;
       }
 
@@ -131,6 +131,7 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
 
       if (data) {
         setServices(prev => [...prev, data]);
+        const serviceName = newService.name;
         setNewService({
           name: '',
           description: '',
@@ -140,12 +141,11 @@ const AdminDashboard = ({ salon, onLogout }: AdminDashboardProps) => {
           popular: false
         });
         setShowAddService(false);
-        showSuccess('Sucesso', 'Serviço adicionado com sucesso!');
-
+        showSuccess('Serviço Adicionado!', `O serviço "${serviceName}" foi adicionado com sucesso e já está disponível para agendamento.`);
       }
     } catch (error) {
       console.error('Error adding service:', error);
-      alert('Erro ao adicionar serviço');
+      showError('Erro', 'Erro ao adicionar serviço. Tente novamente.');
     }
   };
 
