@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase' 
 import { Calendar, Clock, Save, RefreshCw, Lock, Unlock, Plus, Users } from 'lucide-react';
 import Modal from './Modal';
 import { useModal } from '../hooks/useModal';
