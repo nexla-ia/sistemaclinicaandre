@@ -300,7 +300,7 @@ export const createBooking = async (bookingData: {
     }
     
     // Step 3: Create booking
-    const SALON_ID = '19dab0a9-65e1-4152-96d7-dfd348de3b06';
+    const SALON_ID = '6ac10687-8f9a-446b-9b52-5222dccdaf83';
     const { data: booking, error: bookingError } = await supabase
       .from('bookings')
       .insert([{
@@ -571,7 +571,7 @@ export const createReview = async (review: {
     }
     return Math.abs(hash).toString(36);
   };
-  const SALON_ID = '19dab0a9-65e1-4152-96d7-dfd348de3b06';
+  const SALON_ID = '6ac10687-8f9a-446b-9b52-5222dccdaf83';
   const reviewData = {
     ...review,
     customer_identifier: generateFingerprint(),
@@ -594,7 +594,7 @@ export const getAllReviews = async () => {
 }
 
 export const approveReview = async (reviewId: string) => {
-  const SALON_ID = '19dab0a9-65e1-4152-96d7-dfd348de3b06';
+  const SALON_ID = '6ac10687-8f9a-446b-9b52-5222dccdaf83';
   return await supabase
     .from('reviews')
     .update({ approved: true })
